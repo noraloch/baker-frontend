@@ -4,11 +4,12 @@ function Search({bakerSearch, setBakerSearch}) {
 
     return (
         <div className="searchbar">
-          <label htmlFor="search">Search By Name:</label>
+          <label style={{ color:"#695d65" }} htmlFor="search">Search by Name</label>
           <input
+            style={{ border:'none', padding:'8px', marginLeft:'6px' }}
             type="text"
             id="search"
-            placeholder="Type a name to search..."
+            placeholder="Search..."
             value={bakerSearch}
             onChange={(e) => setBakerSearch(e.target.value)}
           />

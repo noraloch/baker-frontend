@@ -1,5 +1,5 @@
 body {
-  margin: 10px;
+  margin: 20px;
   font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Oxygen";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -10,14 +10,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 .searchbar {
-  margin-left: 500px;
-  position: relative;
   background-color: #fceefc;
-  border: none;
+  border: 1px solid white;
   display: inline block;
   flex-direction: column;
   width: 300px;
   padding: 20px;
+  border-radius: 16px;
 }
 
 .logo {
@@ -27,13 +26,14 @@ code {
   height: 70px;
   /* background-position: 50% 50%; */
   /* background-repeat: no-repeat; */
-  margin-left: 55px;
-  margin-top: 10px;
+  margin-left: 70px;
+  margin-top: 20px;
   margin-bottom: 40px;
 }
 .logout {
+  display: flex;
   margin-top: 350px;
-  margin-left: 46px;
+  margin-left: 63px;
   background-color: #df69c6;
 }
 .welcome {
@@ -61,35 +61,38 @@ h5 {
 
 p {
   color: #695d65;
+  margin-bottom: 1px;
 }
 
-img {
+
+/* img {
   width: 310px;
   height: 300px;
-}
+} */
 
 button {
   background-color: #8a6083;
   /* Green */
-  border: none;
+  border: 1px solid white;
+  border-radius: 20px;
   color: white;
   padding: 12px 20px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin: 4px 2px;
   transition-duration: 0.4s;
   cursor: pointer;
   margin-top: 0px;
-  margin-left: auto;
+  margin-left: none;
+  margin-right: auto;
 }
 
 header {
   display: flex;
   /* align-items: center; */
   height: 100%;
-  width: 190px;
+  width: 16%;
   position: fixed;
   float: left;
   top: 0;

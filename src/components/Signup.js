@@ -43,7 +43,7 @@ function SignUp({ setCurrentUser }) {
 
   return (
     <form onSubmit={handleSubmit} autoComplete="off">
-      <h1>Signup</h1>
+      <h3>Signup</h3>
 
       <label>Username</label>
       <input

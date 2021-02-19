@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import Baker from "./Baker"
 import Search from "./Search"
-import NewBakerForm from "./NewBakerForm"
+import NewBakerForm from "./NewBakerForm";
+import styled from "styled-components";
 
 
 function BakersList({ setShowForm, bakersState, bakerSearch, setBakerSearch, handleAddBaker, showForm, handleFormClick, onAdded, onRemoved, currentUser, favs }) {
@@ -11,21 +12,57 @@ function BakersList({ setShowForm, bakersState, bakerSearch, setBakerSearch, han
   })
 
   return (
-    <>   
-    <Search bakerSearch={bakerSearch} setBakerSearch={setBakerSearch}/>
-    <br></br>
-    <div className="sidebar">
-    {showForm ?<button onClick={handleFormClick}>Hide Form</button> : 
-               <button onClick={handleFormClick}>New Baker form</button> }
-    {showForm ? <NewBakerForm setShowForm={setShowForm} handleAddBaker={handleAddBaker}/> : null }
-    </div>
-      <h1>Our Talented Bakers</h1>
-      <br></br>
-      
-      {bakersDisplay}
+    <>
+      <Inliner>
+        <S>
+        <Search bakerSearch={bakerSearch} setBakerSearch={setBakerSearch} />
+        </S>
+        {currentUser ?
+        <New>
+          {showForm ? <button onClick={handleFormClick}>Hide Form</button> :
+            <button onClick={handleFormClick}>New Baker form</button>}
+          {showForm ? <NewBakerForm setShowForm={setShowForm} handleAddBaker={handleAddBaker} /> : null}
+        </New>
+        : null }
+      </Inliner>
+      <Wrapper>
+        <br></br>
+        {bakersDisplay}
+      </Wrapper>
     </>
   )
 
 }
+
+const Wrapper = styled.div`
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+`;
+
+const Inliner = styled.div`
+  display: flex;
+  margin: 20px;
+
+`;
+
+const S = styled.div`
+  display:flex;
+  margin-right: 300px;
+  margin-left: 45px;
+  padding: none;  
+  border: 1px solid white;
+  border-radius: 10px;
+`;
+const New = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  border: 1px solid white;
+  border-radius: 10px;
+  display:flex;
+`;
+
+
 
 export default BakersList;

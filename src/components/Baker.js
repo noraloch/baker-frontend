@@ -18,15 +18,15 @@ function Baker({ baker, onAdded, onRemoved, currentUser, favs }) {
 
     return (
         <Card>
-            <br></br>
             <h3>{name}</h3>
-            <img src={profile_image} alt={name} />
+            <img src={profile_image} alt={name} style={{ height: 220, width:220 }} />
             <br></br>
-            <Link to={`/bakers/${id}`}>View Sample Pastries </Link>
-            <br></br>
+            <LinkStyle>
+            <Link style={{ textDecoration:"none" }} to={`/bakers/${id}`}>View Sample Pastries </Link>
+            </LinkStyle>
             <p> Expertise: {expertise}</p>
             <p> Location: {location}</p>
-            <a> Contact: {contact}</a>
+            <a style={{ marginTop:'2px' }} > Contact: {contact}</a>
             <br></br>
             {currentUser ?
                 <button onClick={handleClick}>{favs.find(f=>f.baker.id === id) ? "Remove Favorite" : "Add to My Favorites"}</button>
@@ -38,16 +38,29 @@ function Baker({ baker, onAdded, onRemoved, currentUser, favs }) {
 
 
 export default Baker
+
+
 const Card = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  width: 200px;
-  height: 100px
-  margin: 10px
+  flex-direction: column;
+  width: 250px;
+  margin: 4%;
+  margin-top: 10px;
+  margin-buttom: 0px;
   padding: 5px;
-  border: none;
+  border: 1px solid #df69c6;
+  border-radius: 6px;
+ 
+
   :hover {
       transform: scale(1.05);
-      box-shadow: 2px 5px white;
+      box-shadow: 2px 5px trasparent;
   }
-`
+`;
+const LinkStyle = styled.div`
+    background-color: #8a6083;
+    background-color: #fceefc;
+    border: 1px solid white;
+    padding: 20px;
+    border-radius: 16px; 
+`;

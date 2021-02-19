@@ -3,59 +3,61 @@ import { useParams } from "react-router-dom";
 import UpdateBakerForm from "./UpdateBakerForm"
 import styled from "styled-components"
 
-function BakerPage({handleUpdateBaker, currentUser}) {
+function BakerPage({ handleUpdateBaker, currentUser }) {
 
-  const {id} = useParams();
+  const { id } = useParams();
 
   const [bakerObj, setBakerObj] = useState({});
   const [pastries, setPastries] = useState([])
   const [showForm, setShowForm] = useState(false)
 
- 
-  
+
+
   // console.log(id);
 
   useEffect(() => {
     fetch(`http://localhost:3000/bakers/${id}`)
       .then((r) => r.json())
-      .then((obj) => {setBakerObj(obj)
+      .then((obj) => {
+        setBakerObj(obj)
         setPastries(obj.pastries)
       }
-      ); 
+      );
   }, [id]);
 
   // console.log(pastries);
-  function handleCurrentBaker(newBaker){
+  function handleCurrentBaker(newBaker) {
     setBakerObj(newBaker)
     handleUpdateBaker(newBaker)
 
   }
 
-  function handleFormClick(){
+  function handleFormClick() {
     setShowForm(showForm => !showForm)
   }
- 
 
-// console.log(bakerObj.pastries);
 
-const { name, location, contact, profile_image, expertise } = bakerObj;
+  // console.log(bakerObj.pastries);
+
+  const { name, location, contact, profile_image, expertise } = bakerObj;
 
   return (
     <section>
       <div>
+        <br></br>
         <h3>{name}</h3>
         <img src={profile_image} alt={name} />
         <p> Expertise: {expertise}</p>
         <p> Location: {location}</p>
         <p> Contact: {contact}</p>
         <div>
-        {currentUser ?
-        <div> 
-        {showForm ? <button onClick={handleFormClick}>Hide Form</button> : 
-                    <button onClick={handleFormClick}>Update Info</button> }
-        {showForm ? <UpdateBakerForm setShowForm={setShowForm} handleCurrentBaker={handleCurrentBaker} bakerObj={bakerObj} /> : null }
-        </div> : null }
-  
+          {currentUser ?
+            <div>
+              {showForm ? <button onClick={handleFormClick}>Hide Form</button> :
+                <button onClick={handleFormClick}>Update Info</button>}
+              {showForm ? <UpdateBakerForm setShowForm={setShowForm} handleCurrentBaker={handleCurrentBaker} bakerObj={bakerObj} /> : null}
+            </div> : null}
+
           {pastries.map((p) => (
             <Card key={p.id}>
               <h4>{p.name}</h4>
